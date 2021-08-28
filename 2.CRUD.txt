@@ -1,0 +1,51 @@
+#Structure:
+1) DB-> Collections>1 -> Documents
+2) --port customPort
+
+#Switching to DB/ Creates but visible only iff got any data
+1) use flights
+2) db.flightCollectionName.insertOne({_key_value_pairs_})
+3) .find() -> outputs all the stored data
+
+#BSON
+1) MongoDB stores by converting JSON to BSON.
+2) We can enter custom ids too.
+
+#CRUD
+_C:
+    insertOne(data,options)
+    insertMany(data,options) :: db.collexnName.insertMany({[_jsonObjectArray_]})
+_R:
+    find(filter,options) :: db.collexnName.find({distance: 12000})
+                            db.collexnName.find({distance: {$gt: 1000}})
+    findOne(filter,options)
+_U:
+    updateOne(filter,data,options) :: db.collexnName.uodateOne({distance: 12000},{$set: {marker: "delete"}})
+    updateMany(filter,data,options) :: db.collexnName.updateMany({},{$set: {marker: "toDelete"}})
+    replaceOne(filter,data,options)
+_D:
+    deleteOne(filter,options)
+    deleteMany(filter,options) :: db.collexnName.deleteMany({marker: "delete"})
+
+
+
+#Update:
+Just update replaces the filtered object with the option provided.
+UpdateOne/Many : use $set{Particular_fields}
+
+#Find
+Actually the .find method returns a cursor object, and thus it is used to loop through the data set.
+.find().toArray() -> formulates all the data into an array thereby exhausting the fields.
+.find().forEach() -> to process each element of the collection.
+
+#Projection:
+To cut down on unnecessary fields of data from our server occupying the bandwidth.
+db.collexnName.find({},{keyOfValueToBeIncluded: 1}) //1 marks the boolean for the field to be present.
+
+#EmbeddedDocuments:
+Hard Limit: 100 Levels of nesting allowed.
+Max 16 Mb/Document
+Nested docs and arrays for a field can exist indipendently of each other.
+
+#Querying on nested values
+db.collexnName.find({"primaryLevel.secondaryLevel_Nesting": "desired_value"})

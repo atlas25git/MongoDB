@@ -1,0 +1,22 @@
+#MONGODB:
+1. Provides server as well as the db to store data and to run it on.
+2. database->Collection->Documents.
+3. These documents are analogous to tables in sql based dbs.
+4. We can skip over the cumbersome joins to extract data, by embedding a document inside another.
+5. One question might be about the efficiency since the data follows opposite of 
+    SQL normalization i.e., storing data at seprate places.
+    MongoDB though stores the data together but the efficient behind the scenes query mechanisms,
+    make the operation efficient.
+    As it saves time on complex joins and merges.
+
+#INIT CMDs:
+1) Start mongod from cmd.
+2) From other tab -> mongo
+3) show dbs
+4) use db_name
+5) db.products.insertOne({key: "Value"})
+     collection inserted doc
+6) .pretty()
+
+#SHELL VS DRIVERS:
+1) Drivers: To use the shell cmds in a particular language's syntax.
