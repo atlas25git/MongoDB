@@ -1,0 +1,50 @@
+#Schema:
+#Data types:
+    1) Text
+    2) Boolean
+    3) Numbers: {int32,int64,NumberDecimal}
+    4) ISODate -> Timestamp:: new Date(), new Timestamp();
+    5) ObjectId
+    6) Embedded Documents
+    7) Array
+
+db.stats() -> lists stats of the db
+
+#Relations:
+    1) References: SQL way
+    2) EmbeddedDocuments: NoSQL way
+
+We use references to circumvent the 16 MB upper limit of mongo DB documents.
+
+Merging the splitted up refrenced docs:
+    db.books.aggregate([{$lookup: {from: "authors", localField: "authors", foreignField: "_id", as: "creators"}}])
+
+#Schema Validation:
+Validates/Rejects incoming data based on the sanitization test provided.
+
+#Adding Validation:
+db.createCollection("posts",{validator: {$jsonSchema: {bsonType: "object", required: ['title','ext','creator','comments'], 
+        
+        properties: {
+            title: {
+               bsonType: "string",
+               description: "some msg" 
+            },
+            text: {
+
+            },
+            creator{
+
+            }
+            }
+        
+        }}})
+
+#Modifying validators
+db.runCommand({
+    callMod: 'posts',
+    validator:{
+
+    },
+    validationAction: 'warn/error',
+});
