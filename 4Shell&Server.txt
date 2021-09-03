@@ -1,0 +1,14 @@
+mongo --port
+      --quiet
+      --dbpath arg
+      --logpath 
+      --repair
+      --storageEngine arg
+      --help
+
+Starting mongoDB as a service:
+    Runs w/o blocking cmd(process like).
+    - ] net start MongoDB
+    
+    Quit
+    - ] net stop MongoDB

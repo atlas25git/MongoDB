@@ -1,0 +1,18 @@
+Creating Documents:
+ - insertOne({})
+ - insertMany([{},{},{}])
+ - insert()
+ - mongoimport -d cars -c carsList --drop --jsonArray
+
+Working With Ordered Inserts:
+ - Doesn't rolled back the already inserted data automatically.
+ - insertMany([],{ordered: false})
+ - Now it continues to the part of doc, after the failed event.
+
+Atomicity:
+ - Transaction either succeeds as a whole, or is rolled back as a whole.
+
+Importing data:
+ - Json files can be imported.
+ - On cmd navigate to json file path.
+ - In the dir: $ mongoimport tv-shows.json -d movieData -c movies --jsonArray --drop
