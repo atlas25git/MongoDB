@@ -1,0 +1,51 @@
+#Method Filters and Operators:
+    db.collection.find({parameters})
+
+#Operators:
+    Query Selectors $eq, $gt
+    Projection $
+    Update $inc
+
+#findOne and find():
+    same filters could be applied to both the methods.
+    db.movies.findOne({runtime:60})    
+
+#Comparison:
+    $ne - not equal to
+    $lt - lower than
+    $lte - lower than equal
+
+#Querying embedded docs:
+    .find({"ratings.average" : {$gt: 7}}).pretty() 
+          {genres: ["Drama"]} - checks if the genres array has exactly one element.
+          {genres: "Drama"}   - checks if it has got Drama along with others included.
+
+$in and $nin:
+    {$in: [values that are to be checked as seperated by ,]}
+    {$nin :[values not in this range]}
+
+$or and $nor
+    { $or: [{"ratings.avrage": {$lt: 5}} , [{"ratings.avrage": {$gt: 2}}] }
+      $nor
+
+$and:
+    { $and: [{"ratings.avrage": {$lt: 5}} , [{"ratings.avrage": {$gt: 2}}] }
+    even by default conditions are taken in and conjunction
+    explicit keyword is designed to avert the duress on js based appn where multiple
+    fields with same name are not allowed.
+    repeated key is replaced by the latter one.
+
+$not:
+    {runtime: {$not: {$eq: 60}}}
+
+$exists:
+    {age: {$exists: true, $ne: null}} 
+
+$type:
+     {phome: {$type: ["double","string"]}}
+    
+$regex: 
+    {summary: {$regex: /musical/}}
+
+$expr:
+    {$expr: {$gt: ["$col1", "$col2"]}}
