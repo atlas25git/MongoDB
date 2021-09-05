@@ -1,0 +1,21 @@
+#Updates:
+    Requires: DocID, Detail to be changed
+    .updateOne/Many({filter: value}, {$set: {hobbies: [{//this array will be overwritten}]}})
+
+#Increment
+        ({name: "Manual"},{$inc: {age: 1}})
+        inc and set simultaneously couldn't be used
+
+#$min, $max, $mul
+    change values if lets say new value lower than existing value
+    $mul - multiplies fields with given nos.
+
+#Getting rid of fields:
+    db.users.updateMany({isSporty: true}, {$unset: {phone: ""}})
+    - will remove all the phone fields for the documents with isSporty == true;
+
+#Rename:
+    .updateMany({}.{$rename: {age: "totalAge"}})
+
+#upsert
+    Passed along with updateOne/Many to insert the filtering data, if it doesn't exist
