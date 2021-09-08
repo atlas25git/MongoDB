@@ -5,7 +5,7 @@ Creating Documents:
  - mongoimport -d cars -c carsList --drop --jsonArray
 
 Working With Ordered Inserts:
- - Doesn't rolled back the already inserted data automatically.
+ - Doesn't roll back the already inserted data automatically.
  - insertMany([],{ordered: false})
  - Now it continues to the part of doc, after the failed event.
 

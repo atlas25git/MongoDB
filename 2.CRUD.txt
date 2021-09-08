@@ -20,7 +20,7 @@ _R:
                             db.collexnName.find({distance: {$gt: 1000}})
     findOne(filter,options)
 _U:
-    updateOne(filter,data,options) :: db.collexnName.uodateOne({distance: 12000},{$set: {marker: "delete"}})
+    updateOne(filter,data,options) :: db.collexnName.updateOne({distance: 12000},{$set: {marker: "delete"}})
     updateMany(filter,data,options) :: db.collexnName.updateMany({},{$set: {marker: "toDelete"}})
     replaceOne(filter,data,options)
 _D:

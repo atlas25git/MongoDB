@@ -25,11 +25,11 @@ $in and $nin:
     {$nin :[values not in this range]}
 
 $or and $nor
-    { $or: [{"ratings.avrage": {$lt: 5}} , [{"ratings.avrage": {$gt: 2}}] }
+    { $or: [{"ratings.avrage": {$lt: 5}} , {"ratings.avrage": {$gt: 2}}] }
       $nor
 
 $and:
-    { $and: [{"ratings.avrage": {$lt: 5}} , [{"ratings.avrage": {$gt: 2}}] }
+    { $and: [{"ratings.avrage": {$lt: 5}} , {"ratings.avrage": {$gt: 2}}] }
     even by default conditions are taken in and conjunction
     explicit keyword is designed to avert the duress on js based appn where multiple
     fields with same name are not allowed.
