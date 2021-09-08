@@ -19,3 +19,16 @@
 
 #upsert
     Passed along with updateOne/Many to insert the filtering data, if it doesn't exist
+
+#Arrays:
+    users.find({$and: [{"hobbies.title": "Sports"},{"hobbies.frequency": {$gte: 3}}]}).pretty();    
+    This however doesn't returns results of an atomic array element, the correct method would be:
+
+    users.find({hobbies: {$elementMatch: {title: "Spots", frequency: {$gte: 3}}}})
+    Now this will match up to the single element with both the given params.
+
+    #Using the query to perform update operations:
+    users.updateMany({hobbies: {$elementMatch: {title: "Spots", frequency: {$gte: 3}}}}, {$set: {"hobbbies.$.highFrequency": true}})
+    //highFrequency: true: field added now, to the documents.
+
+#Left at lec 11/

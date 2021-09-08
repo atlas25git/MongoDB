@@ -1,0 +1,9 @@
+#Stitch:
+
+- Serverless Platform for buliding apps.
+- Things like restFul apis are managed implicitly.
+- React to events.
+- Execute code on the cloud.
+- MongoDB's answer to firebase.
+
+- Install offline stitch sdk

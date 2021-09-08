@@ -1,0 +1,11 @@
+#Delete
+
+#deleteOne
+- All the read filters work here too.
+db.users.deleteOne({name: "Chris"})
+db.users.deleteMany({totalAge: {$exists: false}, isSporty: true})
+
+#delete all documents
+db.users.drop()
+db.users.deleteMany({})
+db.dropDatabase()
